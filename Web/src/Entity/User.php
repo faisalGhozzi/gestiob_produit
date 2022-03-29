@@ -6,6 +6,7 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -35,25 +36,13 @@ class User
     private $email;
 
     /**
-     * @ORM\OneToMany(targetEntity=Transport::class, mappedBy="user",cascade={"remove"})
-     */
-    private $transports;
-
-    /**
      * @ORM\OneToMany(targetEntity=Billet::class, mappedBy="user")
      */
     private $billets;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Transport::class, mappedBy="users")
-     */
-    private $transportsfavoris;
-
     public function __construct()
     {
-        $this->transports = new ArrayCollection();
         $this->billets = new ArrayCollection();
-        $this->transportsfavoris = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -98,36 +87,6 @@ class User
     }
 
     /**
-     * @return Collection<int, Transport>
-     */
-    public function getTransports(): Collection
-    {
-        return $this->transports;
-    }
-
-    public function addTransport(Transport $transport): self
-    {
-        if (!$this->transports->contains($transport)) {
-            $this->transports[] = $transport;
-            $transport->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeTransport(Transport $transport): self
-    {
-        if ($this->transports->removeElement($transport)) {
-            // set the owning side to null (unless already changed)
-            if ($transport->getUser() === $this) {
-                $transport->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
      * @return Collection<int, Billet>
      */
     public function getBillets(): Collection
@@ -152,33 +111,6 @@ class User
             if ($billet->getUser() === $this) {
                 $billet->setUser(null);
             }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Transport>
-     */
-    public function getTransportsfavoris(): Collection
-    {
-        return $this->transportsfavoris;
-    }
-
-    public function addTransportsfavori(Transport $transportsfavori): self
-    {
-        if (!$this->transportsfavoris->contains($transportsfavori)) {
-            $this->transportsfavoris[] = $transportsfavori;
-            $transportsfavori->addUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeTransportsfavori(Transport $transportsfavori): self
-    {
-        if ($this->transportsfavoris->removeElement($transportsfavori)) {
-            $transportsfavori->removeUser($this);
         }
 
         return $this;

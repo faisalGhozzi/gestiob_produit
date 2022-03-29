@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=TransportRepository::class)
@@ -64,19 +65,20 @@ class Transport
     private $prix;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="transports")
+     * @ORM\ManyToOne(targetEntity=Categorie::class)
+     * @ORM\JoinColumns({
+     *  @ORM\JoinColumn(name="categorie_id",referencedColumnName="id",nullable=true)
+     *})
      */
     private $categorie;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="transports")
+     * @ORM\ManyToOne(targetEntity=User::class)
+     * @ORM\JoinColumns({
+     *  @ORM\JoinColumn(name="user_id",referencedColumnName="id",nullable=true)
+     *})
      */
     private $user;
-
-    /**
-     * @ORM\ManyToMany(targetEntity=User::class, inversedBy="transportsfavoris")
-     */
-    private $users;
 
     public function __construct()
     {
@@ -182,14 +184,6 @@ class Transport
         $this->user = $user;
 
         return $this;
-    }
-
-    /**
-     * @return Collection<int, User>
-     */
-    public function getUsers(): Collection
-    {
-        return $this->users;
     }
 
     public function addUser(User $user): self

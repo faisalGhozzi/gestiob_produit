@@ -38,16 +38,6 @@ class Categorie
      */
     private $boitevitesse;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Transport::class, mappedBy="categorie",cascade={"remove"})
-     */
-    private $transports;
-
-    public function __construct()
-    {
-        $this->transports = new ArrayCollection();
-    }
-
     public function getId(): ?int
     {
         return $this->id;
@@ -74,35 +64,6 @@ class Categorie
     {
         $this->boitevitesse = $boitevitesse;
 
-        return $this;
-    }
-
-    /**
-     * @return Collection|Transport[]
-     */
-    public function getTransports(): Collection
-    {
-        return $this->transports;
-    }
-
-    public function addTransport(Transport $transport): self
-    {
-        if (!$this->transports->contains($transport)) {
-            $this->transports[] = $transport;
-            $transport->setIdcategorie($this);
-        }
-
-        return $this;
-    }
-
-    public function removeTransport(Transport $transport): self
-    {
-        if ($this->transports->removeElement($transport)) {
-            // set the owning side to null (unless already changed)
-            if ($transport->getIdcategorie() === $this) {
-                $transport->setIdcategorie(null);
-            }
-        }
         return $this;
     }
 }

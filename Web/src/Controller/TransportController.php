@@ -14,6 +14,7 @@ use App\Form\TransportType;
 use App\Repository\BilletRepository;
 use App\Repository\TransportRepository;
 use DateTime;
+use Exception;
 use Swift_Mailer;
 use Swift_Message;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -23,8 +24,15 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Serializer\Encoder\JsonEncode;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\Serializer\Exception\ExceptionInterface;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class TransportController extends AbstractController
 {
@@ -71,6 +79,111 @@ class TransportController extends AbstractController
 
         return $this->render("back/transport/readTransport.html.twig",array('tabTransport'=>$transport));
     }
+
+    // JSON RESPONSES
+
+    /**
+     * @Route("/transport/json", name="TransportJsonAction")
+     * @throws ExceptionInterface
+     */
+    public function transport(): Response
+    {
+        $transport = $this->getDoctrine()->getManager()
+            ->getRepository(Transport::class)->findAll();
+
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($transport);
+        return new JsonResponse($formatted);
+    }
+
+    /**
+     * @Route("/transport/json/new", name="newTransportJson", methods={"POST"})
+     * @throws Exception
+     */
+    public function newTransportJson(Request $request): JsonResponse
+    {
+        $transport = new Transport();
+
+        $em = $this->getDoctrine()->getManager();
+
+        $transport->setImage($request->get('image'));
+        $transport->setPrix($request->get('prix'));
+        $transport->setMarque($request->get('marque'));
+        $transport->setMatricule($request->get('matricule'));
+        $transport->setModele($request->get('model'));
+        $transport->setNbsiege($request->get('nbsiege'));
+
+        $categorie = $this->getDoctrine()->getRepository(Categorie::class)->find($request->get('categorie'));
+        $user = $this->getDoctrine()->getRepository(User::class)->find($request->get('user'));
+
+        $transport->setCategorie($categorie);
+        $transport->setUser($user);
+
+        $em->persist($transport);
+        $em->flush();
+
+        return new JsonResponse($transport);
+    }
+
+    /**
+     * @Route("/transport/json/update/{id}", name="updateTransportJson")
+     * @throws Exception
+     */
+    public function updateTransportJson(Request $request, $id): JsonResponse
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $transport = $em->getRepository(Transport::class)->find($id);
+
+        $transport->setImage($request->get('image'));
+        $transport->setPrix($request->get('prix'));
+        $transport->setMarque($request->get('marque'));
+        $transport->setMatricule($request->get('matricule'));
+        $transport->setModele($request->get('model'));
+        $transport->setNbsiege($request->get('nbsiege'));
+
+        $categorie = $this->getDoctrine()->getRepository(Categorie::class)->find($request->get('categorie'));
+        $user = $this->getDoctrine()->getRepository(User::class)->find($request->get('user'));
+
+        $transport->setCategorie($categorie);
+        $transport->setUser($user);
+
+
+        $em->flush();
+
+        return new JsonResponse($transport);
+    }
+
+    /**
+     * @Route("/transport/json/{id}", name="TransportIdJson")
+     * @throws ExceptionInterface
+     */
+    public function transportIdJson($id): JsonResponse
+    {
+        $transport = $this->getDoctrine()->getManager()
+            ->getRepository(Transport::class)->find($id);
+
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($transport);
+        return new JsonResponse($formatted);
+    }
+
+    /**
+     * @Route("/transport/json/delete/{id}", name="deleteTransportJsonAction")
+     * @throws ExceptionInterface
+     */
+    public function deleteTransportJsonAction($id): JsonResponse
+    {
+        $transport = $this->getDoctrine()
+            ->getRepository(Transport::class)->find($id);
+        $this->getDoctrine()->getManager()->remove($transport);
+        $this->getDoctrine()->getManager()->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($transport);
+        return new JsonResponse($formatted);
+    }
+
+    // JSON RESPONSES DONE !!!
 
     /**
      * @Route("/editTransport/{id}", name="edit_transport")
