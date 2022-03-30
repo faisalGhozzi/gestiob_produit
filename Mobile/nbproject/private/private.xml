@@ -4,18 +4,24 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/middlefeast/Mobile/src/com/esprit/app/gui/course/AddCourseForm.java</file>
             <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/middlefeast/Mobile/src/com/esprit/app/MyApplication.java</file>
-            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/middlefeast/Mobile/src/com/esprit/app/services/TutorialService.java</file>
-            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/middlefeast/Mobile/src/com/esprit/app/gui/tutorial/AddTutorialForm.java</file>
+            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/middlefeast/Mobile/src/com/esprit/app/gui/user/UserForm.java</file>
+            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/middlefeast/Mobile/src/com/esprit/app/utils/Statics.java</file>
             <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/middlefeast/Mobile/src/com/esprit/app/gui/SideMenu.java</file>
-            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/middlefeast/Mobile/src/com/esprit/app/services/CourseService.java</file>
-            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/middlefeast/Mobile/src/com/esprit/app/gui/course/ShowCourseForm.java</file>
-            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/middlefeast/Mobile/src/com/esprit/app/gui/tutorial/TutorialForm.java</file>
-            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/middlefeast/Mobile/src/com/esprit/app/entity/Tutorial.java</file>
+            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/middlefeast/Mobile/src/com/esprit/app/gui/categorie/CategorieForm.java</file>
             <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/middlefeast/Mobile/src/com/esprit/app/gui/HomeForm.java</file>
-            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/middlefeast/Mobile/src/com/esprit/app/gui/course/CourseForm.java</file>
-            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/middlefeast/Mobile/src/com/esprit/app/gui/tutorial/ShowTutorialForm.java</file>
+            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/middlefeast/Mobile/src/com/esprit/app/services/TransportService.java</file>
+            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/middlefeast/Mobile/src/com/esprit/app/services/UserService.java</file>
+            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/middlefeast/Mobile/src/com/esprit/app/gui/Transport/AddTransportForm.java</file>
+            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/middlefeast/Mobile/src/com/esprit/app/services/CategorieService.java</file>
+            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/middlefeast/Mobile/src/com/esprit/app/gui/Transport/TransportForm.java</file>
+            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/middlefeast/Mobile/src/com/esprit/app/utils/DataSource.java</file>
+            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/middlefeast/Mobile/src/com/esprit/app/entity/Categorie.java</file>
+            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/middlefeast/Mobile/src/com/esprit/app/gui/Transport/ShowTransportForm.java</file>
+            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/middlefeast/Mobile/src/com/esprit/app/entity/Transport.java</file>
+            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/middlefeast/Mobile/src/com/esprit/app/entity/User.java</file>
+            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/middlefeast/Mobile/src/com/esprit/app/gui/categorie/AddCategorieForm.java</file>
+            <file>file:/C:/Users/Faycal%20Ghozzi/Desktop/ProjetsMoney/middlefeast/Mobile/src/com/esprit/app/gui/categorie/ShowCategorieForm.java</file>
         </group>
     </open-files>
 </project-private>

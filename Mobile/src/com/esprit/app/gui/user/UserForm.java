@@ -29,8 +29,8 @@ public class UserForm extends Form{
         super("Users List", GridLayout.autoFit());
         this.theme = theme;
         
-        users = new UserService().getAllUsers();
-        //this.add(new SpanLabel(new ProduitsService().getAllProducts().toString()));
+        /*users = new UserService().getAllUsers();
+        this.add(new SpanLabel(new ProduitsService().getAllProducts().toString()));
         Container list = new Container(BoxLayout.y());
         list.setScrollableY(true);
         for (User user : users) {
@@ -39,16 +39,16 @@ public class UserForm extends Form{
             /*mb.addActionListener((evt) -> {
                 new CourseDetailsForm(this, theme, course).show();
             });*/
-            list.add(mb);
+            //list.add(mb);
             /*img.addPointerReleasedListener((evt)->{
                    new ProductDetailsForm(this, theme,prod.getId()).show();
 
            });		*/
-        }
-        this.getToolbar().addCommandToLeftBar("Return", null, (evt) -> {
+        //}
+        /*this.getToolbar().addCommandToLeftBar("Return", null, (evt) -> {
             previous.showBack();
         });
-        this.add(list);
+        this.add(list);*/
         
     }
 }

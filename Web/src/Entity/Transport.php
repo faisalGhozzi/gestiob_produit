@@ -67,7 +67,7 @@ class Transport
     /**
      * @ORM\ManyToOne(targetEntity=Categorie::class)
      * @ORM\JoinColumns({
-     *  @ORM\JoinColumn(name="categorie_id",referencedColumnName="id",nullable=true)
+     *  @ORM\JoinColumn(name="categorie_id",referencedColumnName="id",nullable=true, onDelete="CASCADE")
      *})
      */
     private $categorie;
@@ -75,7 +75,7 @@ class Transport
     /**
      * @ORM\ManyToOne(targetEntity=User::class)
      * @ORM\JoinColumns({
-     *  @ORM\JoinColumn(name="user_id",referencedColumnName="id",nullable=true)
+     *  @ORM\JoinColumn(name="user_id",referencedColumnName="id",nullable=true, onDelete="SET NULL")
      *})
      */
     private $user;

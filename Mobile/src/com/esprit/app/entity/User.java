@@ -10,32 +10,23 @@ import java.util.List;
 public class User {
     private int id;
     private String email;
-    private List<String> roles;
-    private String password;
-    private String firstname;
-    private String lastname;
-    private boolean isVerified;
+    private String nom;
+    private String prenom;
     
     public User(){
     }
-    
-    public User(int id, String email, List<String> roles, String password, String firstname, String lastname, boolean isVerified) {
+
+    public User(int id, String email, String nom, String prenom) {
         this.id = id;
         this.email = email;
-        this.roles = roles;
-        this.password = password;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.isVerified = isVerified;
+        this.nom = nom;
+        this.prenom = prenom;
     }
 
-    public User(String email, List<String> roles, String password, String firstname, String lastname) {
+    public User(String email, String nom, String prenom) {
         this.email = email;
-        this.roles = roles;
-        this.password = password;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.isVerified = false;
+        this.nom = nom;
+        this.prenom = prenom;
     }
 
     public int getId() {
@@ -54,55 +45,30 @@ public class User {
         this.email = email;
     }
 
-    public List<String> getRoles() {
-        if(roles.isEmpty()){
-            roles.add("ROLE_USER");
-        }
-        return roles;
+    public String getNom() {
+        return nom;
     }
 
-    public void setRoles(List<String> roles) {
-        this.roles = roles;
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPrenom() {
+        return prenom;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
     }
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public boolean getIsVerified() {
-        return isVerified;
-    }
-
-    public void setIsVerified(boolean isVerified) {
-        this.isVerified = isVerified;
+    
+    public String getNomComplet(){
+        return this.nom+" "+this.prenom;
     }
 
     @Override
     public String toString() {
-        return "User{" + "email=" + email + ", roles=" + roles + ", password=" + password + ", firstname=" + firstname + ", lastname=" + lastname + '}';
+        return "User{" + "id=" + id + ", email=" + email + ", nom=" + nom + ", prenom=" + prenom + '}';
     }
-    
-    
     
     
 }

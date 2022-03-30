@@ -110,14 +110,19 @@ class TransportController extends AbstractController
         $transport->setPrix($request->get('prix'));
         $transport->setMarque($request->get('marque'));
         $transport->setMatricule($request->get('matricule'));
-        $transport->setModele($request->get('model'));
+        $transport->setModele($request->get('modele'));
         $transport->setNbsiege($request->get('nbsiege'));
 
-        $categorie = $this->getDoctrine()->getRepository(Categorie::class)->find($request->get('categorie'));
-        $user = $this->getDoctrine()->getRepository(User::class)->find($request->get('user'));
+        if($request->get('user') == -1){
+            $transport->setUser(null);
+        }
+        else{
+            $user = $this->getDoctrine()->getRepository(User::class)->find($request->get('user'));
+            $transport->setUser($user);
+        }
 
+        $categorie = $this->getDoctrine()->getRepository(Categorie::class)->find($request->get('categorie'));
         $transport->setCategorie($categorie);
-        $transport->setUser($user);
 
         $em->persist($transport);
         $em->flush();
@@ -139,7 +144,7 @@ class TransportController extends AbstractController
         $transport->setPrix($request->get('prix'));
         $transport->setMarque($request->get('marque'));
         $transport->setMatricule($request->get('matricule'));
-        $transport->setModele($request->get('model'));
+        $transport->setModele($request->get('modele'));
         $transport->setNbsiege($request->get('nbsiege'));
 
         $categorie = $this->getDoctrine()->getRepository(Categorie::class)->find($request->get('categorie'));

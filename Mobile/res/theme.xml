@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <resource majorVersion="1" minorVersion="11" useXmlUI="false">
-    <image name="background-pic.jpg"  />
-    <image name="background.jpg" type="multi"  />
     <image name="BackgroundRect.png" type="multi"  />
+    <image name="carlot.jpg"  />
     <image name="duke.png" type="multi"  />
     <image name="gradient-overlay.png"  />
     <image name="notes.png" type="multi"  />
@@ -267,8 +266,8 @@
         <val key="TodayTitle.padUnit" value="2,2,2,2" />
         <val key="TodayTitle.padding" value="5.0,3.0,2.0,1.0" />
         <val key="TodayTitle.transparency" value="0" />
-        <val key="Toolbar.bgImage" value="background-pic.jpg" />
-        <val key="Toolbar.bgType" value="28" />
+        <val key="Toolbar.bgImage" value="carlot.jpg" />
+        <val key="Toolbar.bgType" value="33" />
         <border key="Toolbar.border" type="empty" />
         <val key="Toolbar.margin" value="0.0,0.0,0.0,0.0" />
         <val key="Toolbar.padding" value="0.0,0.0,0.0,0.0" />

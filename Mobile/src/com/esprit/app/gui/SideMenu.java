@@ -6,9 +6,10 @@ import com.codename1.ui.*;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.Layout;
 import com.codename1.ui.util.Resources;
-import com.esprit.app.gui.course.CourseForm;
-import com.esprit.app.gui.tutorial.TutorialForm;
+import com.esprit.app.gui.Transport.TransportForm;
+import com.esprit.app.gui.categorie.CategorieForm;
 import com.esprit.app.gui.user.UserForm;
+import com.esprit.app.gui.wishlist.WishlistForm;
 
 public abstract class SideMenu extends Form {
     public SideMenu(String title, Layout contentPaneLayout) {
@@ -43,44 +44,30 @@ public abstract class SideMenu extends Form {
 
         
         getToolbar().addComponentToSideMenu(sidemenuTop);
-
-        /*getToolbar().addCommandToSideMenu("  Add Product", null,	e-> new AddProductForm(this, res).show());
-        getToolbar().addCommandToSideMenu("  List Produts", null,  e-> {
-			try {
-				new ProductsListForm(this,res).show();
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		});*/
-       
-        //getToolbar().addCommandToSideMenu("  Speedometer", null,  e-> new SpeedometerForm(this, res).show());
-        getToolbar().addCommandToSideMenu("  Courses", null, e -> {
+    
+        getToolbar().addCommandToSideMenu("  Categories", null, e -> {
             try {
-                new CourseForm(this, res).show();
+                new CategorieForm(this, res).show();
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
         });
-        getToolbar().addCommandToSideMenu("  Tutorials", null, e -> {
+        getToolbar().addCommandToSideMenu("  Transport", null, e -> {
             try {
-                new TutorialForm(this, res).show();
+                new TransportForm(this, res).show();
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
         });
-        getToolbar().addCommandToSideMenu("  Users", null, e -> {
+        getToolbar().addCommandToSideMenu("  Wishlist", null, e -> {
             try {
-                new UserForm(this, res).show();
+                new WishlistForm(this, res).show();
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
         });
+        
         getToolbar().addCommandToSideMenu("  Logout", null,  e -> new SignInForm(res).show());
-        /*getToolbar().addCommandToSideMenu("  Wishlist", null,  e -> new WishlistForm(res).show());
-        getToolbar().addCommandToSideMenu("  Cart", null,  e -> new PanierForm(res).show());
-        getToolbar().addCommandToSideMenu("  My Orders", null,  e -> new CommandeForm(res).show());
-        //getToolbar().addCommandToSideMenu("  Logout", null,  e -> new LoginForm(res).show());*/
     }
 
     protected abstract void showOtherForm(Resources res);
